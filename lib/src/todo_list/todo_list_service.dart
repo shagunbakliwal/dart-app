@@ -9,8 +9,9 @@ class TodoListService {
   List<String> mockTodoList = thingsTodo().toList();
 
   Future<List<String>> getTodoList() async => mockTodoList;
-}  
-  Iterable<String> thingsTodo() sync* {
+}
+
+Iterable<String> thingsTodo() sync* {
   var actions = ['Walk', 'Wash', 'Feed'];
   var pets = ['cats', 'dogs'];
 
@@ -21,20 +22,18 @@ class TodoListService {
     }
   }
 
-UListElement todoList;
+  UListElement todoList;
 
-void addTodoItem(String item) {
-  print(item);
+  void addTodoItem(String item) {
+    print(item);
 
-  var listElement = LIElement();
-  listElement.text = item;
-  todoList.children.add(listElement);
+    var listElement = LIElement();
+    listElement.text = item;
+    todoList.children.add(listElement);
+  }
+
+  void main() {
+    todoList = querySelector('#todolist');
+    thingsTodo().forEach(addTodoItem);
+  }
 }
-
-
-void main() {
-  todoList = querySelector('#todolist');
-  thingsTodo().forEach(addTodoItem);
-}
-}
-
